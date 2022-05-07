@@ -1,0 +1,30 @@
+% vim:ft=tex:ts=4:sw=0:et
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-table}[2022/04/23 GOST table typesetting rules]
+% Configure tables
+\RequirePackage{tabularx}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\RequirePackage{tabularray}
+\NewColumnType{R}{X[r]}
+\NewColumnType{L}{X[l]}
+\NewColumnType{C}{X[c]}
+\DefTblrTemplate{contfoot-text}{default}{}
+% Разделитель названия таблицы
+\DefTblrTemplate{caption-sep}{default}{\space--\space}
+\DefTblrTemplate{caption}{default}{
+    \raggedright
+    \UseTblrTemplate{caption-tag}{default}
+    \UseTblrTemplate{caption-sep}{default}
+    \UseTblrTemplate{caption-text}{default}
+}
+% Продолжение таблицы
+\DefTblrTemplate{middlehead}{default}{\textit{
+    Продолжение таблицы \thetable
+}}
+% Окончание таблицы
+\DefTblrTemplate{lasthead}{default}{\textit{
+    Окончание таблицы \thetable
+}}
+\DefTblrTemplate{lastfoot}{default}{\hline}

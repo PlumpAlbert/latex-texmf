@@ -1,0 +1,93 @@
+% vim:ft=tex:ts=4:sw=0:et
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-diploma}[2022/04/23]
+
+% Variables
+
+% Факультет
+\def\faculty#1{\def\@faculty{#1}}
+\faculty{автоматизации и информатики}
+
+% Кафедра
+\def\department#1{\def\@department{#1}}
+\department{автоматизированных систем управления}
+
+% Ученая степень
+\def\academicTitle#1{\def\@academicTitle{#1}}
+\academicTitle{}
+
+% ФИО преподавателя
+\def\teacher#1{\def\@teacher{#1}}
+\teacher{ФИО}
+
+% ФИО студента
+\author{Федин М.С.}
+% Название отчета
+\title{}
+
+% Название направления
+\def\studyWay#1{\def\@studyWay{#1}}
+\studyWay{09.03.04 Программная инженерия}
+
+% Тип программы
+\def\programType#1{\def\@programType{#1}}
+\programType{академическая}
+
+% Профиль обучения
+\def\profile#1{\def\@profile{#1}}
+\profile{Разработка программно-информационных систем}
+
+% Группа
+\def\group#1{\def\@group{#1}}
+\group{ПИ-18}
+
+\def\tempempty{}
+\renewcommand{\maketitle}{
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+        \textbf{Липецкий государственный технический университет}
+
+        Факультет \@faculty
+
+        Кафедра \@department
+        \\[\baselineskip]
+        \uppercase{Выпускная Квалификационная Работа Бакалавра}
+
+        по направлению \@studyWay
+
+        тип программы \@programType
+
+        профиль \textquote{\@profile}
+        \\[\baselineskip]
+        \ifx\@title\tempempty
+            {}
+        \else
+            \@title
+        \fi
+        \\[\baselineskip]
+    \end{center}
+    \vfill
+    \begin{table}[H]
+        \begin{tabularx}{\textwidth}{lCR}
+        Студент         &               & \@author  \\ \cline{2-2}
+        Группа \@group  & подпись, дата &           \\
+        Руководитель    &               &           \\
+        \@academicTitle &               & \@teacher \\ \cline{2-2}
+                        & подпись, дата &           \\
+        Консультант по  &               &           \\
+        программному обеспечению        &     &     \\
+        уч. звание      &               & ФИО       \\ \cline{2-2}
+                        & подпись, дата &           \\
+        Нормоконтроль   &               & ФИО       \\ \cline{2-2}
+                        & подпись, дата &           \\
+        Заведующий кафедрой             &     &     \\
+        канд. техн. наук, доцент   &    & Алексеев В.А. \\ \cline{2-2}
+                        & подпись, дата &
+        \end{tabularx}%
+    \end{table}
+    \begin{center}
+        Липецк \the\year { г.}
+    \end{center}
+\pagebreak
+}

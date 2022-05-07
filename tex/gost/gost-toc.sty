@@ -1,0 +1,27 @@
+% vim:ft=tex:ts=4:sw=0:et
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-toc}[2022/04/23]
+
+% TOC
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hspace{1.25cm}}
+\renewcommand{\cftaftertoctitleskip}{0em}
+\renewcommand{\cftchapfont}{\hspace{0pt}}            % Имена секций в содержании не жирным шрифтом
+\renewcommand\cftchapleader{\cftdotfill{\cftdotsep}} % Точки для секций в содержании
+\renewcommand\cftchappagefont{\mdseries}             % Номера страниц не жирные
+\setcounter{tocdepth}{3}                            % Глубина оглавления, до subsubsection
+
+% Uppercase chapter headings in TOC
+\usepackage{textcase}
+\makeatletter
+\let\oldcontentsline\contentsline
+\def\contentsline#1#2{
+    \expandafter\ifx\csname l@#1\endcsname\l@chapter
+        \expandafter\@firstoftwo
+    \else
+        \expandafter\@secondoftwo
+    \fi
+    {\oldcontentsline{#1}{\MakeTextUppercase{#2}}}
+    {\oldcontentsline{#1}{#2}}
+}
+\makeatother

@@ -1,0 +1,17 @@
+% vim:ft=tex:ts=4:sw=0:et
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-lists}[2022/04/23]
+
+\RequirePackage{enumitem}
+\setlist[itemize,enumerate]{
+    nolistsep,
+    align=left,
+    leftmargin=*,
+    labelindent=\parindent,
+    itemindent=0pt,
+    wide
+}
+\def\labelitemi{--}
+% Formatting of nested enumerate list
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\arabic{enumii})}

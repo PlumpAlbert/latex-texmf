@@ -1,0 +1,77 @@
+% vim:ft=tex:ts=4:sw=0:et
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-headings}[2022/04/23]
+
+\RequirePackage{titlesec}
+\setlength\parindent{1.25cm}
+
+\titleformat
+   {\chapter} % <command>
+   [block]
+   {\normalfont\normalsize\filright} % <format>
+   {\thechapter\space} % <label>
+   {0pt} % <sep>
+   {} % <before-code>
+\titlespacing
+    {\chapter}% command
+    {1.25cm} % left
+    {0pt} % before sep
+    {0pt} % after sep
+    {} % right sep
+
+\titleformat
+   {\section} % <command>
+   [block]
+   {\normalfont\normalsize} % <format>
+   {} % <label>
+   {1.25cm} % <sep>
+   {\thesection\space} % <before-code>
+\titlespacing*{\section}{0cm}{*3}{0pt}
+
+\titleformat
+   {\subsection} % <command>
+   [block]
+   {\normalfont\normalsize} % <format>
+   {} % <label>
+   {1.25cm} % <sep>
+   {\thesubsection\space} % <before-code>
+\titlespacing*{\subsection}{0cm}{*3}{0pt}
+
+
+\titleformat
+   {\subsubsection} % <command>
+   [block]
+   {\normalfont\normalsize} % <format>
+   {} % <label>
+   {1.25cm} % <sep>
+   {\thesubsubsection\space} % <before-code>
+\titlespacing*{\subsubsection}{0cm}{*3}{0pt}
+
+
+% Sections without numbering
+\titleformat
+	{\paragraph}
+	[block]
+	{\normalfont\normalsize}
+	{}
+	{0cm}
+	{\hspace{1.25cm}}
+\titlespacing*{\paragraph}{0cm}{*3}{0pt}
+
+\newcommand{\anonchapter}[1]{
+	\phantomsection % Correct reference jump
+	\paragraph{#1}
+}
+\newcommand{\tocchapter}[1]{
+	\phantomsection % Correct reference jump
+	\paragraph{#1}
+	\addcontentsline{toc}{chapter}{\uppercase{#1}}
+}
+\newcommand{\anonsection}[1]{
+	\phantomsection % Correct reference jump
+	\paragraph{#1}
+}
+\newcommand{\tocsection}[1]{
+	\phantomsection % Correct reference jump
+	\paragraph{#1}
+}
