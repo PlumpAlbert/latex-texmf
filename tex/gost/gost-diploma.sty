@@ -91,3 +91,27 @@
     \end{center}
 \pagebreak
 }
+
+% Create command to add annotations
+\RequirePackage{gost-headings}
+\RequirePackage{lastpage}
+\RequirePackage[figures,table]{totalcount}
+
+\newcommand{\makeannotation}[1]{
+    \clearpage
+
+    \tocchapter{Аннотация}
+
+    С. \pageref{LastPage}
+    \iftotalfigures
+        {, Ил. \totalfigures}
+    \fi
+    \iftotaltables
+        {, Табл. \totaltables}
+    \fi
+    Литература \# назв.
+
+    {#1}
+
+    \clearpage
+}
