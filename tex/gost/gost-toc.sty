@@ -4,8 +4,9 @@
 
 % TOC
 \usepackage{tocloft}
-\renewcommand{\cfttoctitlefont}{\hspace{1.25cm}}
-\renewcommand{\cftaftertoctitleskip}{0em}
+\renewcommand{\cfttoctitlefont}{\normalsize\normalfont}
+\setlength{\cftbeforetoctitleskip}{0em} % Убрать отступ перед оглавлением
+\setlength{\cftaftertoctitleskip}{0em} % Убрать отступ после оглавления
 \renewcommand{\cftchapfont}{\hspace{0pt}}            % Имена секций в содержании не жирным шрифтом
 \renewcommand\cftchapleader{\cftdotfill{\cftdotsep}} % Точки для секций в содержании
 \renewcommand\cftchappagefont{\mdseries}             % Номера страниц не жирные
