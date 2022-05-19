@@ -26,8 +26,7 @@
 ]{geometry}
 
 %% Date formatting
-\RequirePackage{datetime}
-\renewcommand{\dateseparator}{.}
+\RequirePackage[datesep=.,style=ddmmyyyy,useregional]{datetime2}
 
 %% GOST packages
 \RequirePackage{gost-headings}
