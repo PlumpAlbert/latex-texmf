@@ -96,6 +96,16 @@
 \RequirePackage{gost-headings}
 \RequirePackage{lastpage}
 \RequirePackage[figure,table,xspace]{totalcount}
+\RequirePackage{totcount}
+
+\newtotcounter{attachments}
+% \regtotcounter{attachments}
+\setcounter{attachments}{0}
+\newcommand{\attachment}[2][\empty]{
+    \stepcounter{attachments}
+    \tocchapter{Приложение \Asbuk{attachments}. #2}%
+    \label{attachment:\arabic{attachments}}{#1}%
+}
 
 \newcommand{\makeannotation}[1]{
     \clearpage
@@ -110,6 +120,7 @@
         {Табл. \totaltables.}
     \fi
     Литература \ref{ref:last} назв.
+    Прил. \total{attachments};
 
     {#1}
 
