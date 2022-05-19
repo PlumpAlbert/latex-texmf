@@ -25,6 +25,10 @@
     left=2.5cm,
 ]{geometry}
 
+%% Date formatting
+\RequirePackage{datetime}
+\renewcommand{\dateseparator}{.}
+
 %% GOST packages
 \RequirePackage{gost-headings}
 \RequirePackage{gost-listings}
