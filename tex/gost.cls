@@ -26,7 +26,11 @@
 ]{geometry}
 
 %% Date formatting
-\RequirePackage[datesep=.,style=ddmmyyyy,useregional]{datetime2}
+\RequirePackage[ddmmyyyy]{datetime}
+\newdateformat{fakendate}{%
+  \twodigit{\THEDAY}.\twodigit{\THEMONTH}.\THEYEAR
+}
+\renewcommand{\dateseparator}{.}
 
 %% GOST packages
 \RequirePackage{gost-headings}
