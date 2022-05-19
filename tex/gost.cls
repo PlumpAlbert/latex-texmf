@@ -42,3 +42,6 @@
 \setmainfont{Times New Roman}
 \renewcommand{\baselinestretch}{1.5}
 \setlength\parindent{1.25cm}
+
+%% URL styling
+\renewcommand{\UrlFont}{\normalfont\normalsize\rmfamily}
