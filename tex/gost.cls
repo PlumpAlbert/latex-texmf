@@ -52,3 +52,40 @@
 
 %% URL styling
 \renewcommand{\UrlFont}{\normalfont\normalsize\rmfamily}
+
+% Create command to add annotations
+\RequirePackage{gost-headings}
+\RequirePackage{lastpage}
+\RequirePackage[figure,table,xspace]{totalcount}
+\RequirePackage{totcount}
+
+\newtotcounter{attachments}
+% \regtotcounter{attachments}
+\setcounter{attachments}{0}
+\newcommand{\attachment}[2][\empty]{
+    \stepcounter{attachments}
+    \tocchapter{Приложение \Asbuk{attachments}. #2}%
+    \label{attachment:\arabic{attachments}}{#1}%
+}
+
+\newcommand\makeannotation[1]{
+    \clearpage
+
+    \anonchapter{Аннотация}
+
+    С. \pageref{ref:last}.
+    \iftotalfigures
+        {Ил. \totalfigures.}
+    \fi
+    \iftotaltables
+        {Табл. \totaltables.}
+    \fi
+    Литература \ref{ref:last} назв.%
+    \ifnum\totvalue{attachments}>0%
+        { Прил. \total{attachments}}%
+    \fi;%
+
+    {#1}
+
+    \clearpage
+}

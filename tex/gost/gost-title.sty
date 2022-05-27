@@ -1,0 +1,73 @@
+% vim:ft=tex:ts=4:sw=0:et:foldmethod=marker
+% Author: Plump Albert (plumpalbert@gmail.com)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-title}[ 2022/05/27 ]
+
+\newcommand\sectionA[1]{\def\@sectionA{#1}}
+\sectionA{СЕКЦИЯ А}
+\newcommand\sectionB[1]{\def\@sectionB{#1}}
+\sectionB{}
+
+% {{{ Variables
+% Факультет
+\def\faculty#1{\def\@faculty{#1}}
+\faculty{автоматизации и информатики}
+
+% Кафедра
+\def\department#1{\def\@department{#1}}
+\department{автоматизированных систем управления}
+
+% Ученая степень
+\def\academicTitle#1{\def\@academicTitle{#1}}
+\academicTitle{}
+
+% ФИО преподавателя
+\def\teacher#1{\def\@teacher{#1}}
+\teacher{ФИО}
+
+% Группа
+\def\group#1{\def\@group{#1}}
+\group{ПИ-18}
+
+% ФИО студента
+\author{Федин М.С.}
+% Название отчета
+\title{}
+
+% }}}
+
+\def\tempempty{}
+\renewcommand{\maketitle}{
+    \newpage
+    \thispagestyle{empty}
+    \begin{center}
+        \textbf{Липецкий государственный технический университет}
+
+        Факультет \@faculty
+
+        Кафедра \@department
+        \vfill
+        \@sectionA
+
+        \ifx\@title\tempempty
+            {}
+        \else
+            \@title
+        \fi
+    \end{center}\vfill
+    \begin{table}[H]%
+        \begin{tabularx}{\textwidth}{lCr}%
+        Студент         &               &           \\
+        Группа \@group  &               & \@author  \\ \cline{2-2}
+                        & подпись, дата &           \\
+        Руководитель    &               &           \\
+        \@academicTitle &               & \@teacher \\ \cline{2-2}
+                        & подпись, дата &           \\
+        \@sectionB
+        \end{tabularx}%
+    \end{table}
+    \begin{center}
+        Липецк \the\year\space г.
+    \end{center}
+\pagebreak
+}

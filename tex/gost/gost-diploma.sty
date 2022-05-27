@@ -1,30 +1,8 @@
-% vim:ft=tex:ts=4:sw=0:et
+% vim:ft=tex:ts=4:sw=0:et:foldmethod=marker
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{gost-diploma}[2022/04/23]
 
-% Variables
-
-% Факультет
-\def\faculty#1{\def\@faculty{#1}}
-\faculty{автоматизации и информатики}
-
-% Кафедра
-\def\department#1{\def\@department{#1}}
-\department{автоматизированных систем управления}
-
-% Ученая степень
-\def\academicTitle#1{\def\@academicTitle{#1}}
-\academicTitle{}
-
-% ФИО преподавателя
-\def\teacher#1{\def\@teacher{#1}}
-\teacher{ФИО}
-
-% ФИО студента
-\author{Федин М.С.}
-% Название отчета
-\title{}
-
+% {{{ Variables
 % Название направления
 \def\studyWay#1{\def\@studyWay{#1}}
 \studyWay{09.03.04 Программная инженерия}
@@ -41,90 +19,38 @@
 \def\group#1{\def\@group{#1}}
 \group{ПИ-18}
 
-\def\tempempty{}
-\renewcommand{\maketitle}{
-    \newpage
-    \thispagestyle{empty}
-    \begin{center}
-        \textbf{Липецкий государственный технический университет}
+% Консультант по ПО
+\def\consulting#1#2{\def\@consultingDegree{#1}\def\@consultingName{#2}}
+\consulting{уч. степень}{ФИО}
 
-        Факультет \@faculty
+% Нормоконтроль
+\def\normocontrol#1{\def\@normocontrol{#1}}
+\normocontrol{Болдырихин О.В.}
 
-        Кафедра \@department
-        \\[\baselineskip]
-        \uppercase{Выпускная Квалификационная Работа Бакалавра}
+% Заведующий кафедрой
+\def\departmentHead#1#2{\def\@departmentHeadDegree{#1}\def\@departmentHeadName{#2}}
+\departmentHead{к.т.н., доцент}{Алексеев В.А.}
 
-        по направлению \@studyWay
+% }}}
 
-        тип программы \@programType
+\RequirePackage{gost-title}
+\sectionA{
+    \uppercase{Выпускная Квалификационная Работа Бакалавра}
 
-        профиль \textquote{\@profile}
-        \\[\baselineskip]
-        \ifx\@title\tempempty
-            {}
-        \else
-            \@title
-        \fi
-        \\[\baselineskip]
-    \end{center}
-    \vfill
-    \begin{table}[H]
-        \begin{tabularx}{\textwidth}{lCR}
-        Студент         &               & \@author  \\ \cline{2-2}
-        Группа \@group  & подпись, дата &           \\
-        Руководитель    &               &           \\
-        \@academicTitle &               & \@teacher \\ \cline{2-2}
-                        & подпись, дата &           \\
-        Консультант по  &               &           \\
-        программному обеспечению        &     &     \\
-        уч. звание      &               & ФИО       \\ \cline{2-2}
-                        & подпись, дата &           \\
-        Нормоконтроль   &               & ФИО       \\ \cline{2-2}
-                        & подпись, дата &           \\
-        Заведующий кафедрой             &     &     \\
-        канд. техн. наук, доцент   &    & Алексеев В.А. \\ \cline{2-2}
-                        & подпись, дата &
-        \end{tabularx}%
-    \end{table}
-    \begin{center}
-        Липецк \the\year { г.}
-    \end{center}
-\pagebreak
+    по направлению \@studyWay
+
+    тип программы \@programType
+
+    профиль \textquote{\@profile}
 }
-
-% Create command to add annotations
-\RequirePackage{gost-headings}
-\RequirePackage{lastpage}
-\RequirePackage[figure,table,xspace]{totalcount}
-\RequirePackage{totcount}
-
-\newtotcounter{attachments}
-% \regtotcounter{attachments}
-\setcounter{attachments}{0}
-\newcommand{\attachment}[2][\empty]{
-    \stepcounter{attachments}
-    \tocchapter{Приложение \Asbuk{attachments}. #2}%
-    \label{attachment:\arabic{attachments}}{#1}%
-}
-
-\newcommand{\makeannotation}[1]{
-    \clearpage
-
-    \anonchapter{Аннотация}
-
-    С. \pageref{ref:last}.
-    \iftotalfigures
-        {Ил. \totalfigures.}
-    \fi
-    \iftotaltables
-        {Табл. \totaltables.}
-    \fi
-    Литература \ref{ref:last} назв.%
-    \ifnum\totvalue{attachments}>0%
-        { Прил. \total{attachments}}%
-    \fi;%
-
-    {#1}
-
-    \clearpage
+\sectionB{
+    Консультант по  &               &           \\
+    программному обеспечению        &     &     \\
+    \@consultingDegree &            & \@consultingName \\ \cline{2-2}
+                    & подпись, дата &           \\
+    Нормоконтроль   &               & \@normocontrol \\ \cline{2-2}
+                    & подпись, дата &           \\
+    Заведующий кафедрой             &     &     \\
+    \@departmentHeadDegree    &     & \@departmentHeadName \\ \cline{2-2}
+                    & подпись, дата &
 }

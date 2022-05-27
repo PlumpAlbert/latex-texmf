@@ -1,0 +1,24 @@
+% vim:ft=tex:ts=4:sw=0:et:foldmethod=marker
+% Author: Plump Albert (plumpalbert@gmail.com)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-nirs}[2022/05/27]
+
+% {{{ Variables
+% Нормоконтроль
+\def\normocontrol#1{\def\@normocontrol{#1}}
+\normocontrol{Болдырихин О.В.}
+
+% }}}
+
+\RequirePackage{gost-title}
+\sectionA{
+    \uppercase{отчет}
+
+    по производственной практике
+
+    (научно-исследовательская работа)
+}
+\sectionB{
+    Нормоконтроль & & \@normocontrol \\ \cline{2-2}
+    & подпись, дата &
+}
