@@ -112,15 +112,17 @@
 
     \anonchapter{Аннотация}
 
-    С. \pageref{LastPage}.
+    С. \pageref{ref:last}.
     \iftotalfigures
         {Ил. \totalfigures.}
     \fi
     \iftotaltables
         {Табл. \totaltables.}
     \fi
-    Литература \ref{ref:last} назв.
-    Прил. \total{attachments};
+    Литература \ref{ref:last} назв.%
+    \ifnum\totvalue{attachments}>0%
+        { Прил. \total{attachments}}%
+    \fi;%
 
     {#1}
 
