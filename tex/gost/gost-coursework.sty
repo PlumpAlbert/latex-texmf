@@ -1,97 +1,19 @@
-% vim:ft=tex:ts=4:sw=0:et
+% vim:ft=tex:ts=4:sw=0:et:foldmethod=marker
+% Author: Plump Albert (plumpalbert@gmail.com)
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{gost-diploma}[2022/04/23]
+\ProvidesPackage{gost-nirs}[2022/05/27]
 
-% Variables
-
-% Факультет
-\def\faculty#1{\def\@faculty{#1}}
-\faculty{автоматизации и информатики}
-
-% Кафедра
-\def\department#1{\def\@department{#1}}
-\department{автоматизированных систем управления}
-
-% Дисциплина
+% {{{ Variables
+% Нормоконтроль
 \def\discipline#1{\def\@discipline{#1}}
 \discipline{Название дисциплины}
 
-% Ученая степень
-\def\academicTitle#1{\def\@academicTitle{#1}}
-\academicTitle{}
+% }}}
 
-% ФИО преподавателя
-\def\teacher#1{\def\@teacher{#1}}
-\teacher{}
+\RequirePackage{gost-title}
+\sectionA{
+    \uppercase{Курсовая работа}
 
-% ФИО студента
-\author{Федин М.С.}
-% Название отчета
-\title{}
-
-% Группа
-\def\group#1{\def\@group{#1}}
-\group{ПИ-18}
-
-\def\tempempty{}
-\renewcommand{\maketitle}{
-    \newpage
-    \thispagestyle{empty}
-    \begin{center}
-        \textbf{Липецкий государственный технический университет}
-
-        Факультет \@faculty
-
-        Кафедра \@department
-
-        \vfill
-        \uppercase{Курсовая работа}
-
-        по дисциплине \textquote{\@discipline}
-
-        \ifx\@title\tempempty
-            {}
-        \else
-            \textquote{\@title}
-        \fi
-        \vfill
-
-    \end{center}
-    \vfill
-    \begin{table}[H]
-        \begin{tabularx}{\textwidth}{L>{\centering}m{6cm}R}
-        Студент         &               & \@author  \\ \cline{2-2}
-        Группа \@group  & подпись, дата &           \\
-        Руководитель    &               &           \\
-        \@academicTitle &               & \@teacher \\ \cline{2-2}
-                        & подпись, дата &           \\
-        \end{tabularx}%
-    \end{table}
-    \begin{center}
-        Липецк \the\year { г.}
-    \end{center}
-\pagebreak
+    по дисциплине \textquote{\@discipline}
 }
-
-%% Count images and tables
-\RequirePackage{etoolbox}
-
-\newcounter{totfigures}
-\newcounter{tottables}
-
-\providecommand\totfig{} 
-\providecommand\tottab{}
-
-\makeatletter
-\AtEndDocument{%
-  \addtocounter{totfigures}{\value{figure}}%
-  \addtocounter{tottables}{\value{table}}%
-  \immediate\write\@mainaux{%
-    \string\gdef\string\totfig{\number\value{totfigures}}%
-    \string\gdef\string\tottab{\number\value{tottables}}%
-  }%
-}
-\makeatother
-
-\pretocmd{\chapter}{\addtocounter{totfigures}{\value{figure}}\setcounter{figure}{0}}{}{}
-\pretocmd{\chapter}{\addtocounter{tottables}{\value{table}}\setcounter{table}{0}}{}{}
+\sectionB{}
