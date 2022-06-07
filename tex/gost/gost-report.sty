@@ -1,0 +1,19 @@
+% vim:ft=tex:ts=4:sw=0:et:foldmethod=marker
+% Author: Plump Albert (plumpalbert@gmail.com)
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{gost-report}[2022/06/07]
+
+% {{{ Variables
+% Нормоконтроль
+\def\discipline#1{\def\@discipline{#1}}
+\discipline{Название дисциплины}
+
+% }}}
+
+\RequirePackage{gost-title}
+\sectionA{
+    \uppercase{Практическая работа}
+
+    по дисциплине \textquote{\@discipline}
+}
+\sectionB{}
